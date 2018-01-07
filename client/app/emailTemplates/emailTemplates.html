@@ -1,0 +1,12 @@
+<h1>Email Templates</h1>
+<div class="page-actions">
+    <button class="btn btn-primary">New Template</button>
+</div>
+<div class="template-container" ng-repeat="template in $ctrl.templates">
+    <h3>{{template.name}}</h3>
+    <p>{{template.description}}</p>
+    <div class="item-actions">
+        <button class="btn btn-warning">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+    </div>
+</div>

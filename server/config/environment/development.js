@@ -9,6 +9,11 @@ module.exports = {
   mongo: {
     uri: 'mongodb://localhost/dubinest-dev'
   },
+  // MailGun API settings
+  mailgun:{
+    apiKey = '',
+    domain = '',
+  },
 
   // Seed database on startup
   seedDB: true

@@ -37,7 +37,7 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   facebook: {},
-  github: {}
+  activationCode: String 
 });
 
 /**
@@ -120,9 +120,16 @@ var validatePresenceOf = function(value) {
  */
 UserSchema
   .pre('save', function(next) {
+    //store isNew value to be used in post save
+    this.wasNew = this.isNew
+
     // Handle new/update passwords
     if(!this.isModified('password')) {
       return next();
+    }
+
+    if(this.isNew){
+      this.activationCode = this.generateActivationCode();
     }
 
     if(!validatePresenceOf(this.password)) {
@@ -148,6 +155,14 @@ UserSchema
       });
     });
   });
+
+  UserSchema.post('save', function(doc){
+    // handle new user signup
+    if(this.wasNew){
+
+
+    }
+  })
 
 /**
  * Methods
@@ -249,7 +264,20 @@ UserSchema.methods = {
         return callback(null, key.toString('base64'));
       }
     });
+  },
+
+  /**
+   * Encrypt password
+   *
+   * @param {function} callback
+   * @return {String}
+   * @api public
+   */
+  generateActivationCode(callback){
+    return Math.floor(Math.random() * 1000000);
   }
+
+
 };
 
 registerEvents(UserSchema);

@@ -16,6 +16,13 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/room/room.socket').register(socket);
+  require('../api/activity/activity.socket').register(socket);
+  require('../api/staffmember/staffmember.socket').register(socket);
+  require('../api/parent/parent.socket').register(socket);
+  require('../api/student/student.socket').register(socket);
+  require('../api/smsTemplate/smsTemplate.socket').register(socket);
+  require('../api/emailTemplate/emailTemplate.socket').register(socket);
   require('../api/school/school.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);
 }

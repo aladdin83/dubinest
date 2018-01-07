@@ -9,6 +9,13 @@ import path from 'path';
 
 export default function(app) {
   // Insert routes below
+  app.use('/api/rooms', require('./api/room'));
+  app.use('/api/activities', require('./api/activity'));
+  app.use('/api/staffmembers', require('./api/staffmember'));
+  app.use('/api/parents', require('./api/parent'));
+  app.use('/api/students', require('./api/student'));
+  app.use('/api/sms_templates', require('./api/smsTemplate'));
+  app.use('/api/email_templates', require('./api/emailTemplate'));
   app.use('/api/schools', require('./api/school'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));

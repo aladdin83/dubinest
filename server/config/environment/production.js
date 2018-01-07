@@ -20,5 +20,11 @@ module.exports = {
       || process.env.MONGOHQ_URL
       || process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME
       || 'mongodb://localhost/dubinest'
-  }
+  },
+  // MailGun API settings
+  mailgun:{
+    apiKey = process.env.MAILGUN_API_KEY,
+    domain = process.env.MAILGUN_DOMAIN,
+  },
+  
 };

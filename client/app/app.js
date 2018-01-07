@@ -26,11 +26,15 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
 
+import emailTemplates from './emailTemplates/emailTemplates.component';
+import smsTemplates from './smsTemplates/smsTemplates.component';
+
 import './app.scss';
 
 angular.module('dubinestApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter,
   uiBootstrap, _Auth, account, admin, 'validation.match', navbar, footer, main, constants,
-  socket, util
+  socket, util,
+  emailTemplates, smsTemplates
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
